@@ -1,0 +1,16 @@
+E9.5_trunk_WT_cHiC_merge	chr2:74721977	E9.5_trunk_WT_cHiC_merge_vC_Hoxd4.bedgraph
+E9.5_trunk_WT_cHiC_merge	chr2:74697726	E9.5_trunk_WT_cHiC_merge_vC_Hoxd9.bedgraph
+E9.5_trunk_WT_cHiC_merge	chr2:75588758	E9.5_trunk_WT_cHiC_merge_vC_border.bedgraph
+E9.5_trunk_DelCBS1_cHiC_merge	chr2:74721977	E9.5_trunk_DelCBS1_cHiC_merge_vC_Hoxd4.bedgraph
+E9.5_trunk_DelCBS1-3_cHiC_merge	chr2:74721977	E9.5_trunk_DelCBS1-3_cHiC_merge_vC_Hoxd4.bedgraph
+E9.5_trunk_DelCBS1-3_cHiC_merge	chr2:74697726	E9.5_trunk_DelCBS1-3_cHiC_merge_vC_Hoxd9.bedgraph
+E9.5_trunk_DelCBS1-3_cHiC_merge	chr2:75588758	E9.5_trunk_DelCBS1-3_cHiC_merge_vC_border.bedgraph
+E9.5_trunk_DelCBS1-5_cHiC_merge	chr2:74721977	E9.5_trunk_DelCBS1-5_cHiC_merge_vC_Hoxd4.bedgraph
+E9.5_trunk_DelCBS1-5_cHiC_merge	chr2:74697726	E9.5_trunk_DelCBS1-5_cHiC_merge_vC_Hoxd9.bedgraph
+E9.5_trunk_DelCBS1-5_cHiC_merge	chr2:75588758	E9.5_trunk_DelCBS1-5_cHiC_merge_vC_border.bedgraph
+E12.5_PFL_WT_cHiC	chr2:74721977	E12.5_PFL_WT_cHiC_vC_Hoxd4.bedgraph
+E12.5_PFL_WT_cHiC	chr2:74704614	E12.5_PFL_WT_cHiC_vC_Hoxd8.bedgraph
+E12.5_PFL_DelCBS1_cHiC	chr2:74721977	E12.5_PFL_DelCBS1_cHiC_vC_Hoxd4.bedgraph
+E12.5_PFL_DelCBS1_cHiC	chr2:74704614	E12.5_PFL_DelCBS1_cHiC_vC_Hoxd8.bedgraph
+E12.5_PFL_DelCBS1-3_cHiC	chr2:74704614	E12.5_PFL_DelCBS1-3_cHiC_vC_Hoxd8.bedgraph
+E12.5_PFL_DelCBS1-5_cHiC	chr2:74704614	E12.5_PFL_DelCBS1-5_cHiC_vC_Hoxd8.bedgraph

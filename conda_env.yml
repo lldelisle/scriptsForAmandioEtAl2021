@@ -1,0 +1,13 @@
+name: amandio2021
+channels:
+    - bioconda
+    - conda-forge
+dependencies:
+    - python =3.7
+    - numpy <1.20
+    - deeptools =3.5
+    - hicexplorer =3.6
+    - pip
+    - pip:
+        - "git+https://github.com/lldelisle/pyGenomeTracks.git@Amandio2021"
+        - manorm==1.1.4
