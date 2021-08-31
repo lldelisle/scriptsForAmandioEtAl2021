@@ -1,4 +1,5 @@
 import sys
+from math import floor, ceil
 import argparse
 from signal import signal, SIGPIPE, SIG_DFL
 signal(SIGPIPE, SIG_DFL)
@@ -38,7 +39,8 @@ def getViewpoints(chrom, fragmentFile, colC, colS, colE, colI,
                 continue
             v = line.split()
             if len(v) < max(colC, colS, colE, colI):
-                raise InputError("The ids of columns specified in the input"
+                raise InputError("len(v) < max(colC, colS, colE, colI)",
+                                 "The ids of columns specified in the input"
                                  " for the fragment file are incompatible with"
                                  f" the line :{line}")
             # Only look at cis:
@@ -117,7 +119,8 @@ def fragToBinInCis(chrom, fragmentFile, colC, colS, colE, colI,
                 sys.stderr.write(f"\r{i} lines of fragment file analysed.")
             v = line.split()
             if len(v) < max(colC, colS, colE, colI):
-                raise InputError("The ids of columns specified in the input"
+                raise InputError("len(v) < max(colC, colS, colE, colI)",
+                                 "The ids of columns specified in the input"
                                  " for the fragment file are incompatible with"
                                  f" the line :{line}")
             # Only look at cis:
@@ -178,9 +181,9 @@ def smooth(array, bin):
     lists = [array[i:-(bin - i - 1)]
              for i in range(bin - 1)] + [array[(bin - 1):]]
     middle_mean = [sum(x) / bin for x in zip(*lists)]
-    beginning = [sum(array[:(i+1)]) / (i+1) for i in range(bin - 1)]
-    end = [sum(array[-(i+1):]) / (i+1) for i in range(bin - 1)]
-    end.reverse
+    beginning = [sum(array[:(ceil(bin / 2) + i)]) / (ceil(bin / 2) + i) for i in range(floor(bin / 2))]
+    end = [sum(array[-(floor(bin / 2) + i + 1):]) / (floor(bin / 2) + i + 1) for i in range(ceil(bin / 2) - 1)]
+    end.reverse()
     return(beginning + middle_mean + end)
 
 
