@@ -14,7 +14,7 @@
 gitHubDirectory=$1
 
 path="$PWD/"
-mainPath="$PWD/../"
+mainPath="${path}/../"
 pathRNAseq="${mainPath}/RNAseq/"
 pathCHiC="${mainPath}/cHi-C/"
 pathChIPM="${mainPath}/ChIPM/"
@@ -91,8 +91,6 @@ chr2\t74650810\t74767377" > Hox_pos.bed
 
 echo -e "chr6\t52151994\t52278047" > Hox_neg.bed
 
-# Common ini_files:
-echo ""
 
 # Figure 1
 ini_file="Fig1A.ini"
@@ -1062,6 +1060,144 @@ orientation = inverted
 
 pyGenomeTracks --tracks ${ini_file} --out ${ini_file/.ini/.pdf} --region chr2:74650810-74767377 --width 19 --height 2.2
 
+## Figure S5A
+ini_file="FigS5A.ini"
+prot=CTCF
+echo "[scalebar]
+file_type = scalebar
+height = 0.5
+where = top
+x_center = 75469724
+size = 200000
+" > ${ini_file}
+for genotype in "WT" "DelCBS1" "DelCBS1-2" "DelCBS1-3" "DelCBS1-4" "DelCBS1-5"; do
+  mergedFile=$(ls ${pathChIPM}/toGEO/E10.5_trunk_${genotype}_ChIPM_${prot}_MAnorm_neq*.bw)
+  if [ -z "$mergedFile" ]; then
+    mergedFile=${pathChIPM}/toGEO/E10.5_trunk_${genotype}_ChIPM_${prot}_MAnorm.bw
+  fi
+  echo "[${prot}_${genotype}]
+file = ${mergedFile}
+height = 2
+color = black
+nans_to_zeros = true
+number_of_bins = 2000
+min_value = 0
+max_value = 2000
+summary_method = max
+
+[spacer]
+height = 0.15
+" >> ${ini_file}
+done
+echo "[CTCF peaks]
+file = ${gitHubDirectory}/ChIPmentation/outputs/E10.5_trunk_WT_ChIPM_CTCF_rep1and2and3_colored.bed
+display = collapsed
+color = bed_rgb
+border_color = none
+labels = false
+height = 0.5
+
+[spacer]
+height = 0.15
+
+[genes]
+file = nonHox.gtf
+merge_transcripts = true
+color = #a6a8ab
+color_utr = #a6a8ab
+border_color = none
+height = 0.4
+display = collapsed
+labels = False
+style = flybase
+
+[hoxD]
+file = HoxD_CS3840.bed
+color = bed_rgb
+color_utr = bed_rgb
+border_color = none
+overlay_previous = yes
+labels = False
+
+[hoxD]
+file = HoxD_CS3840.bed
+color = none
+color_utr = none
+border_color = none
+height = 0.3
+" >> ${ini_file}
+
+pyGenomeTracks --tracks ${ini_file} --out ${ini_file/.ini/.pdf} --region chr2:73779626-75669724 --width 19.5 --height 10
+
+## Figure S5B
+ini_file="FigS5B.ini"
+prot=RAD21
+echo "[scalebar]
+file_type = scalebar
+height = 0.5
+where = top
+x_center = 75469724
+size = 200000
+" > ${ini_file}
+for genotype in "WT" "DelCBS1" "DelCBS1-2" "DelCBS1-3" "DelCBS1-4" "DelCBS1-5"; do
+  mergedFile=$(ls ${pathChIPM}/toGEO/E10.5_trunk_${genotype}_ChIPM_${prot}_MAnorm_neq*.bw)
+  if [ -z "$mergedFile" ]; then
+    mergedFile=${pathChIPM}/toGEO/E10.5_trunk_${genotype}_ChIPM_${prot}_MAnorm.bw
+  fi
+  echo "[${prot}_${genotype}]
+file = ${mergedFile}
+height = 2
+color = black
+nans_to_zeros = true
+number_of_bins = 2000
+min_value = 0
+max_value = 2000
+summary_method = max
+
+[spacer]
+height = 0.15
+" >> ${ini_file}
+done
+echo "[CTCF peaks]
+file = ${gitHubDirectory}/ChIPmentation/outputs/E10.5_trunk_WT_ChIPM_CTCF_rep1and2and3_colored.bed
+display = collapsed
+color = bed_rgb
+border_color = none
+labels = false
+height = 0.5
+
+[spacer]
+height = 0.15
+
+[genes]
+file = nonHox.gtf
+merge_transcripts = true
+color = #a6a8ab
+color_utr = #a6a8ab
+border_color = none
+height = 0.4
+display = collapsed
+labels = False
+style = flybase
+
+[hoxD]
+file = HoxD_CS3840.bed
+color = bed_rgb
+color_utr = bed_rgb
+border_color = none
+overlay_previous = yes
+labels = False
+
+[hoxD]
+file = HoxD_CS3840.bed
+color = none
+color_utr = none
+border_color = none
+height = 0.3
+" >> ${ini_file}
+
+pyGenomeTracks --tracks ${ini_file} --out ${ini_file/.ini/.pdf} --region chr2:73779626-75669724 --width 19.5 --height 10
+
 ## Figure S6
 ini_file="FigS6A.ini"
 echo "" > ${ini_file}
@@ -1078,7 +1214,7 @@ show_masked_bins = false
 file_type = hic_matrix
 
 [quantification]
-file = ${gitHubDirectory}/cHi-C/trunk_S6.bedpe
+file = ${gitHubDirectory}/cHi-C/trunk_S7.bedpe
 color = black
 line_width = 3
 overlay_previous = share-y
@@ -1241,8 +1377,8 @@ line_width = 0
 
 pyGenomeTracks --tracks ${ini_file} --dpi 500 --width 7 --height 5 --region chr2:74580020-74780798 -o ${ini_file/.ini/.png}
 
-## Figure S7
-ini_file="FigS7A.ini"
+## Figure S8
+ini_file="FigS8A.ini"
 echo "[scalebar]
 file_type = scalebar
 x_center = 74570000
@@ -1268,7 +1404,7 @@ show_masked_bins = false
 file_type = hic_matrix
 
 [quantification]
-file = ${gitHubDirectory}/cHi-C/trunk_S7.bedpe
+file = ${gitHubDirectory}/cHi-C/trunk_S8.bedpe
 color = black
 line_width = 0.5
 overlay_previous = share-y
@@ -1324,7 +1460,7 @@ fontsize = 5
 pyGenomeTracks --tracks ${ini_file} --dpi 500 --width 9 --height 12 \
   --region chr2:74469563-75691603 -o ${ini_file/.ini/.png}
 
-ini_file="FigS7C.ini"
+ini_file="FigS8C.ini"
 viewpoints=('Hoxd4' 'Hoxd4' 'Hoxd9' 'border' 'Hoxd4' 'Hoxd9' 'border')
 mutants=('1' '1-3' '1-3' '1-3' '1-5' '1-5' '1-5')
 echo "[scalebar]
@@ -1415,8 +1551,8 @@ pyGenomeTracks --tracks ${ini_file} --dpi 500 --width 9 --height 8 \
 
 
 
-## Figure S9
-ini_file="FigS9E.ini"
+## Figure S10
+ini_file="FigS10E.ini"
 echo "[gene names]
 file = prot_coding_around_HoxD_start.bed
 color = none
@@ -1582,8 +1718,8 @@ line_width = 0
 pyGenomeTracks --tracks ${ini_file} -out ${ini_file/.ini/.pdf} \
   --region chr2:74650810-74767377 --width 11.7 --height 4
 
-## Figure S13
-ini_file=FigS13A.ini
+## Figure S14
+ini_file=FigS14A.ini
 echo "[scalebar]
 file_type = scalebar
 height = 0.5
@@ -1607,7 +1743,7 @@ show_masked_bins = false
 file_type = hic_matrix
 
 [quantification]
-file = ${gitHubDirectory}/cHi-C/PFL_S13.bedpe
+file = ${gitHubDirectory}/cHi-C/PFL_S14.bedpe
 color = black
 line_width = 0.5
 overlay_previous = share-y
@@ -1660,7 +1796,7 @@ fontsize = 5
 pyGenomeTracks --tracks ${ini_file} --dpi 500 --width 9 --height 12 \
   --region chr2:74469563-75691603 -o ${ini_file/.ini/.png}
 
-ini_file="FigS13C.ini"
+ini_file="FigS14C.ini"
 viewpoints=('Hoxd4' 'Hoxd8' 'Hoxd8' 'Hoxd8')
 mutants=('1' '1' '1-3' '1-5')
 echo "[scalebar]

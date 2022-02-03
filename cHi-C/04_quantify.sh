@@ -23,7 +23,7 @@ conda activate amandio2021
 mkdir -p quantif
 
 cd quantif
-my_regions=${gitHubDirectory}/cHi-C/trunk_S6.bedpe
+my_regions=${gitHubDirectory}/cHi-C/trunk_S7.bedpe
 c_cool=${path}/correct/E9.5_trunk_WT_cHiC_merge_10kb_hicTransform.cool
 allFiles=""
 for m_cool in ${path}/correct/E9.5*Del*merge*.cool; do
@@ -35,7 +35,7 @@ done
 paste $allFiles | cut -f 1,4,5,10,11,16,17 > ${my_regions/.bedpe/_quantif.txt}
 
 
-my_regions=${gitHubDirectory}/cHi-C/trunk_S7.bedpe
+my_regions=${gitHubDirectory}/cHi-C/trunk_S8.bedpe
 c_cool=${path}/toGEO/E9.5_trunk_WT_cHiC_merge_10kb.cool
 allFiles=""
 for m_cool in ${path}/toGEO/E9.5*Del*merge*.cool; do
